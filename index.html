@@ -1,0 +1,402 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Portfolio | Your Name</title>
+  <meta name="description" content="Portfolio satu halaman: profil, skill, project, dan kontak." />
+  <style>
+    :root{
+      --bg:#ffffff;
+      --text:#0f172a;
+      --muted:#475569;
+      --card:#f8fafc;
+      --border:#e2e8f0;
+      --accent:#2563eb;
+      --accent2:#0ea5e9;
+      --shadow: 0 10px 30px rgba(15, 23, 42, .08);
+      --radius: 16px;
+      --max: 1080px;
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, "Apple Color Emoji","Segoe UI Emoji";
+      background:var(--bg);
+      color:var(--text);
+      line-height:1.6;
+    }
+    a{color:inherit; text-decoration:none}
+    .container{max-width:var(--max); margin:0 auto; padding:0 20px}
+    .nav{
+      position:sticky; top:0; z-index:50;
+      backdrop-filter:saturate(180%) blur(10px);
+      background: rgba(255,255,255,.75);
+      border-bottom:1px solid rgba(226,232,240,.7);
+    }
+    .nav-inner{display:flex; align-items:center; justify-content:space-between; padding:14px 0}
+    .brand{display:flex; gap:10px; align-items:center; font-weight:700}
+    .dot{width:10px;height:10px;border-radius:999px;background:linear-gradient(135deg,var(--accent),var(--accent2)); box-shadow:0 0 0 4px rgba(37,99,235,.12)}
+    .links{display:flex; gap:14px; align-items:center; flex-wrap:wrap}
+    .links a{font-size:14px; color:var(--muted); padding:8px 10px; border-radius:10px}
+    .links a:hover{background:rgba(15,23,42,.04); color:var(--text)}
+    .btn{
+      display:inline-flex; align-items:center; justify-content:center; gap:10px;
+      padding:10px 14px; border-radius:12px; border:1px solid var(--border);
+      background:var(--bg); color:var(--text); box-shadow:none;
+      font-size:14px; font-weight:600; transition:.18s ease;
+    }
+    .btn:hover{transform:translateY(-1px); box-shadow:var(--shadow)}
+    .btn.primary{
+      border:0;
+      background:linear-gradient(135deg,var(--accent),var(--accent2));
+      color:white;
+    }
+    .hero{
+      padding:56px 0 30px;
+      background:
+        radial-gradient(1200px 400px at 20% -10%, rgba(37,99,235,.18), transparent 60%),
+        radial-gradient(900px 360px at 90% 0%, rgba(14,165,233,.16), transparent 55%);
+    }
+    .hero-grid{
+      display:grid; grid-template-columns: 1.2fr .8fr; gap:22px;
+      align-items:stretch;
+    }
+    @media (max-width: 900px){
+      .hero-grid{grid-template-columns: 1fr; }
+    }
+    .headline{font-size:42px; line-height:1.12; margin:0 0 14px}
+    @media (max-width: 520px){
+      .headline{font-size:34px}
+    }
+    .sub{color:var(--muted); margin:0 0 18px; max-width:60ch}
+    .pill-row{display:flex; flex-wrap:wrap; gap:10px; margin:18px 0 22px}
+    .pill{
+      font-size:13px; color:var(--muted);
+      padding:8px 10px; border-radius:999px;
+      border:1px solid var(--border);
+      background:rgba(248,250,252,.8);
+    }
+    .card{
+      background:var(--card);
+      border:1px solid var(--border);
+      border-radius:var(--radius);
+      padding:18px;
+      box-shadow: 0 8px 22px rgba(15,23,42,.06);
+    }
+    .photo{
+      display:flex; flex-direction:column; gap:14px; height:100%;
+      justify-content:space-between;
+    }
+    .avatar{
+      width:84px; height:84px; border-radius:22px;
+      background: linear-gradient(135deg, rgba(37,99,235,.22), rgba(14,165,233,.16));
+      border:1px solid rgba(226,232,240,.9);
+      display:grid; place-items:center;
+      overflow:hidden;
+    }
+    .avatar img{width:100%; height:100%; object-fit:cover}
+    .small{font-size:13px; color:var(--muted); margin:0}
+    .section{padding:28px 0}
+    .section h2{margin:0 0 14px; font-size:22px}
+    .grid-3{display:grid; grid-template-columns:repeat(3,1fr); gap:14px}
+    .grid-2{display:grid; grid-template-columns:repeat(2,1fr); gap:14px}
+    @media (max-width: 900px){
+      .grid-3{grid-template-columns:1fr}
+      .grid-2{grid-template-columns:1fr}
+    }
+    .item h3{margin:0 0 6px; font-size:16px}
+    .item p{margin:0; color:var(--muted); font-size:14px}
+    .tags{display:flex; flex-wrap:wrap; gap:8px; margin-top:12px}
+    .tag{
+      font-size:12px; color:var(--muted);
+      padding:6px 8px; border-radius:999px; border:1px solid var(--border);
+      background:rgba(255,255,255,.65);
+    }
+    .proj-head{display:flex; align-items:flex-start; justify-content:space-between; gap:10px}
+    .proj-links{display:flex; gap:10px; flex-wrap:wrap}
+    .proj-links a{font-size:13px; color:var(--accent); font-weight:600}
+    .proj-links a:hover{text-decoration:underline}
+    .footer{
+      padding:26px 0 40px;
+      border-top:1px solid var(--border);
+      color:var(--muted);
+      font-size:13px;
+    }
+    .kbd{
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      font-size: 12px;
+      padding: 4px 7px;
+      border:1px solid var(--border);
+      border-bottom-width:2px;
+      border-radius:8px;
+      background:rgba(255,255,255,.8);
+      color:var(--text);
+    }
+  </style>
+</head>
+
+<body>
+  <!-- NAV -->
+  <header class="nav">
+    <div class="container">
+      <div class="nav-inner">
+        <div class="brand">
+          <span class="dot" aria-hidden="true"></span>
+          <a href="#top">BLASIUS USTETU</a>
+        </div>
+        <nav class="links" aria-label="Navigasi">
+          <a href="#about">About</a>
+          <a href="#skills">Skills</a>
+          <a href="#projects">Projects</a>
+          <a href="#contact">Contact</a>
+          <a class="btn" href="assets/cv.pdf" target="_blank" rel="noopener">Download CV</a>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <main id="top">
+    <section class="hero">
+      <div class="container">
+        <div class="hero-grid">
+          <div>
+            <h1 class="headline">Frontend / Web Developer yang fokus pada produk rapi dan cepat.</h1>
+            <p class="sub">
+              Saya membangun website dan web app yang responsif, mudah dipakai, dan siap production.
+              Fokus saya: UI yang bersih, performa, dan integrasi API / dashboard.
+            </p>
+
+            <div class="pill-row">
+              <span class="pill">Based: Indonesia</span>
+              <span class="pill">Open to: Freelance / Full-time</span>
+              <span class="pill">Stack: HTML • CSS • JS • React</span>
+            </div>
+
+            <div style="display:flex; gap:12px; flex-wrap:wrap">
+              <a class="btn primary" href="#projects">Lihat Projects</a>
+              <a class="btn" href="#contact">Hubungi Saya</a>
+            </div>
+
+            <p class="small" style="margin-top:14px">
+              Shortcut: tekan <span class="kbd">Ctrl</span> + <span class="kbd">L</span> untuk copy link portofolio setelah publish.
+            </p>
+          </div>
+
+          <aside class="card photo">
+            <div style="display:flex; gap:14px; align-items:center">
+              <div class="avatar" title="Ganti dengan foto kamu">
+                <!-- Ganti src jadi assets/foto.jpg -->
+                <img src="https://via.placeholder.com/200" alt="Foto profil" />
+              </div>
+              <div>
+                <h2 style="margin:0; font-size:18px">BLASIUS USTETU</h2>
+                <p class="small" style="margin:4px 0 0">Web Developer • UI Implementation • Dashboard</p>
+              </div>
+            </div>
+
+            <div class="card" style="background:rgba(255,255,255,.65)">
+              <div class="item">
+                <h3>Highlight</h3>
+                <p>Membuat landing page + dashboard dengan integrasi data dan UX yang jelas.</p>
+                <div class="tags">
+                  <span class="tag">Responsive</span>
+                  <span class="tag">Clean UI</span>
+                  <span class="tag">Fast</span>
+                  <span class="tag">SEO basic</span>
+                </div>
+              </div>
+            </div>
+
+            <div style="display:flex; gap:10px; flex-wrap:wrap">
+              <a class="btn" href="https://github.com/USERNAME" target="_blank" rel="noopener">GitHub</a>
+              <a class="btn" href="https://linkedin.com/in/USERNAME" target="_blank" rel="noopener">LinkedIn</a>
+              <a class="btn" href="mailto:you@email.com">Email</a>
+            </div>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="about" class="section">
+      <div class="container">
+        <h2>About</h2>
+        <div class="grid-2">
+          <div class="card item">
+            <h3>Ringkas</h3>
+            <p>
+              Saya seorang developer yang suka mengubah kebutuhan bisnis menjadi UI yang jelas dan mudah digunakan.
+              Terbiasa membuat web app berbasis form, dashboard, dan landing page yang rapi.
+            </p>
+          </div>
+          <div class="card item">
+            <h3>Value yang saya bawa</h3>
+            <p>
+              Struktur kode yang bersih, komunikasi jelas, dan hasil yang siap deploy.
+              Saya juga nyaman dengan iterasi cepat berdasarkan feedback.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SKILLS -->
+    <section id="skills" class="section">
+      <div class="container">
+        <h2>Skills</h2>
+        <div class="grid-3">
+          <div class="card item">
+            <h3>Frontend</h3>
+            <p>HTML, CSS, JavaScript, Responsive Layout, Accessibility basic.</p>
+            <div class="tags">
+              <span class="tag">React</span>
+              <span class="tag">Tailwind (optional)</span>
+              <span class="tag">SPA</span>
+            </div>
+          </div>
+          <div class="card item">
+            <h3>Backend / Data</h3>
+            <p>Node.js basic, REST API integration, Google Sheets / Apps Script.</p>
+            <div class="tags">
+              <span class="tag">API</span>
+              <span class="tag">Auth basic</span>
+              <span class="tag">CRUD</span>
+            </div>
+          </div>
+          <div class="card item">
+            <h3>Tools</h3>
+            <p>Git/GitHub, Figma handoff, Deployment GitHub Pages.</p>
+            <div class="tags">
+              <span class="tag">Versioning</span>
+              <span class="tag">Debug</span>
+              <span class="tag">Performance</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROJECTS -->
+    <section id="projects" class="section">
+      <div class="container">
+        <h2>Projects</h2>
+
+        <div class="grid-2">
+          <article class="card item">
+            <div class="proj-head">
+              <div>
+                <h3>Project 01 — Inventory Web App</h3>
+                <p>Web app sederhana untuk input/update data inventaris berbasis spreadsheet.</p>
+              </div>
+              <div class="proj-links">
+                <a href="#" target="_blank" rel="noopener">Demo</a>
+                <a href="#" target="_blank" rel="noopener">Repo</a>
+              </div>
+            </div>
+            <div class="tags">
+              <span class="tag">CRUD</span>
+              <span class="tag">Sheets</span>
+              <span class="tag">Form UX</span>
+            </div>
+          </article>
+
+          <article class="card item">
+            <div class="proj-head">
+              <div>
+                <h3>Project 02 — Trading Dashboard</h3>
+                <p>Dashboard KPI (PnL, ROI, APR) dengan visual chart dan ringkasan harian.</p>
+              </div>
+              <div class="proj-links">
+                <a href="#" target="_blank" rel="noopener">Demo</a>
+                <a href="#" target="_blank" rel="noopener">Repo</a>
+              </div>
+            </div>
+            <div class="tags">
+              <span class="tag">Dashboard</span>
+              <span class="tag">Chart</span>
+              <span class="tag">Analytics</span>
+            </div>
+          </article>
+
+          <article class="card item">
+            <div class="proj-head">
+              <div>
+                <h3>Project 03 — Landing Page Product</h3>
+                <p>Landing page clean dengan CTA, section fitur, dan optimasi mobile.</p>
+              </div>
+              <div class="proj-links">
+                <a href="#" target="_blank" rel="noopener">Demo</a>
+                <a href="#" target="_blank" rel="noopener">Repo</a>
+              </div>
+            </div>
+            <div class="tags">
+              <span class="tag">SEO basic</span>
+              <span class="tag">Fast load</span>
+              <span class="tag">Responsive</span>
+            </div>
+          </article>
+
+          <article class="card item">
+            <div class="proj-head">
+              <div>
+                <h3>Project 04 — Web3 DApp (Optional)</h3>
+                <p>DApp sederhana: connect wallet dan interaksi contract (contoh donasi).</p>
+              </div>
+              <div class="proj-links">
+                <a href="#" target="_blank" rel="noopener">Demo</a>
+                <a href="#" target="_blank" rel="noopener">Repo</a>
+              </div>
+            </div>
+            <div class="tags">
+              <span class="tag">Ethers.js</span>
+              <span class="tag">Wallet</span>
+              <span class="tag">BNB Chain</span>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" class="section">
+      <div class="container">
+        <h2>Contact</h2>
+        <div class="grid-2">
+          <div class="card item">
+            <h3>Kontak langsung</h3>
+            <p style="margin-bottom:10px">Paling cepat via email. Bisa juga DM LinkedIn.</p>
+            <div style="display:flex; gap:10px; flex-wrap:wrap">
+              <a class="btn primary" href="mailto:you@email.com">you@email.com</a>
+              <a class="btn" href="https://wa.me/62XXXXXXXXXXX" target="_blank" rel="noopener">WhatsApp</a>
+              <a class="btn" href="https://linkedin.com/in/USERNAME" target="_blank" rel="noopener">LinkedIn</a>
+            </div>
+          </div>
+
+          <div class="card item">
+            <h3>Info</h3>
+            <p>
+              Jika kamu rekruter/klien, tuliskan ringkas kebutuhan, deadline, dan referensi.
+              Saya akan balas dengan estimasi scope dan milestone.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <div class="container" style="display:flex; justify-content:space-between; gap:12px; flex-wrap:wrap">
+        <span>© <span id="y"></span> Your Name. All rights reserved.</span>
+        <span>Built with HTML/CSS • Hosted on GitHub Pages</span>
+      </div>
+    </footer>
+  </main>
+
+  <script>
+    // Tahun otomatis
+    document.getElementById("y").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
