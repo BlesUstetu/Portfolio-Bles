@@ -2,401 +2,701 @@
 <html lang="id">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Portfolio | Your Name</title>
-  <meta name="description" content="Portfolio satu halaman: profil, skill, project, dan kontak." />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>BlesProduction — Portfolio</title>
+  <meta name="description" content="BlesProduction — Web3 Frontend Developer. Clean UI for crypto products." />
   <style>
     :root{
-      --bg:#ffffff;
-      --text:#0f172a;
-      --muted:#475569;
-      --card:#f8fafc;
-      --border:#e2e8f0;
-      --accent:#2563eb;
-      --accent2:#0ea5e9;
-      --shadow: 0 10px 30px rgba(15, 23, 42, .08);
-      --radius: 16px;
-      --max: 1080px;
+      --bg:#070A12;
+      --muted:#9AA4B2;
+      --text:#E8EEF6;
+      --line:rgba(255,255,255,.08);
+      --accent2:#5CF0B7;
+      --shadow: 0 18px 50px rgba(0,0,0,.45);
+      --radius:18px;
+      --w: 1080px;
+      --mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      --sans: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
     }
+
     *{box-sizing:border-box}
-    html{scroll-behavior:smooth}
+    html,body{height:100%}
     body{
       margin:0;
-      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, "Apple Color Emoji","Segoe UI Emoji";
-      background:var(--bg);
-      color:var(--text);
-      line-height:1.6;
-    }
-    a{color:inherit; text-decoration:none}
-    .container{max-width:var(--max); margin:0 auto; padding:0 20px}
-    .nav{
-      position:sticky; top:0; z-index:50;
-      backdrop-filter:saturate(180%) blur(10px);
-      background: rgba(255,255,255,.75);
-      border-bottom:1px solid rgba(226,232,240,.7);
-    }
-    .nav-inner{display:flex; align-items:center; justify-content:space-between; padding:14px 0}
-    .brand{display:flex; gap:10px; align-items:center; font-weight:700}
-    .dot{width:10px;height:10px;border-radius:999px;background:linear-gradient(135deg,var(--accent),var(--accent2)); box-shadow:0 0 0 4px rgba(37,99,235,.12)}
-    .links{display:flex; gap:14px; align-items:center; flex-wrap:wrap}
-    .links a{font-size:14px; color:var(--muted); padding:8px 10px; border-radius:10px}
-    .links a:hover{background:rgba(15,23,42,.04); color:var(--text)}
-    .btn{
-      display:inline-flex; align-items:center; justify-content:center; gap:10px;
-      padding:10px 14px; border-radius:12px; border:1px solid var(--border);
-      background:var(--bg); color:var(--text); box-shadow:none;
-      font-size:14px; font-weight:600; transition:.18s ease;
-    }
-    .btn:hover{transform:translateY(-1px); box-shadow:var(--shadow)}
-    .btn.primary{
-      border:0;
-      background:linear-gradient(135deg,var(--accent),var(--accent2));
-      color:white;
-    }
-    .hero{
-      padding:56px 0 30px;
+      font-family:var(--sans);
       background:
-        radial-gradient(1200px 400px at 20% -10%, rgba(37,99,235,.18), transparent 60%),
-        radial-gradient(900px 360px at 90% 0%, rgba(14,165,233,.16), transparent 55%);
+        radial-gradient(900px 500px at 15% 10%, rgba(138,162,255,.12), transparent 60%),
+        radial-gradient(800px 520px at 85% 20%, rgba(92,240,183,.10), transparent 55%),
+        radial-gradient(700px 520px at 50% 110%, rgba(255,255,255,.06), transparent 55%),
+        var(--bg);
+      color:var(--text);
+      line-height:1.5;
+      overflow-x:hidden;
     }
-    .hero-grid{
-      display:grid; grid-template-columns: 1.2fr .8fr; gap:22px;
-      align-items:stretch;
+
+    a{color:inherit; text-decoration:none}
+    .container{max-width:var(--w); margin:0 auto; padding:24px}
+    .topbar{
+      position:sticky; top:0; z-index:20;
+      backdrop-filter: blur(10px);
+      background: rgba(7,10,18,.72);
+      border-bottom:1px solid var(--line);
     }
-    @media (max-width: 900px){
-      .hero-grid{grid-template-columns: 1fr; }
+    .topbar .inner{display:flex; align-items:center; justify-content:space-between; gap:16px; padding:14px 24px}
+    .brand{
+      display:flex; align-items:center; gap:12px; min-width:220px;
+      font-weight:700; letter-spacing:.2px;
     }
-    .headline{font-size:42px; line-height:1.12; margin:0 0 14px}
-    @media (max-width: 520px){
-      .headline{font-size:34px}
+    .logo{
+      width:38px; height:38px; border-radius:12px;
+      background:
+        radial-gradient(16px 16px at 30% 35%, rgba(255,255,255,.35), transparent 60%),
+        linear-gradient(135deg, rgba(138,162,255,.95), rgba(92,240,183,.85));
+      box-shadow: 0 10px 30px rgba(138,162,255,.18);
+      border:1px solid rgba(255,255,255,.12);
     }
-    .sub{color:var(--muted); margin:0 0 18px; max-width:60ch}
-    .pill-row{display:flex; flex-wrap:wrap; gap:10px; margin:18px 0 22px}
+    nav{display:flex; gap:16px; align-items:center; flex-wrap:wrap; justify-content:flex-end}
+    nav a{
+      color: rgba(232,238,246,.82);
+      font-size:14px;
+      padding:8px 10px;
+      border-radius:10px;
+      transition: .2s ease;
+    }
+    nav a:hover{background: rgba(255,255,255,.06); color: var(--text)}
+
+    .btn{
+      display:inline-flex; align-items:center; justify-content:center;
+      gap:10px;
+      padding:12px 14px;
+      border-radius:14px;
+      border:1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.04);
+      color: var(--text);
+      font-weight:600;
+      font-size:14px;
+      cursor:pointer;
+      transition: transform .18s ease, background .18s ease, border-color .18s ease;
+      user-select:none;
+    }
+    .btn:hover{transform: translateY(-1px); background: rgba(255,255,255,.06); border-color: rgba(255,255,255,.16)}
+    .btn.primary{
+      background: linear-gradient(135deg, rgba(138,162,255,.95), rgba(92,240,183,.70));
+      border-color: rgba(255,255,255,.22);
+      color: #061016;
+    }
+    .btn.primary:hover{transform: translateY(-2px)}
+    .btn.small{padding:10px 12px; border-radius:12px}
     .pill{
-      font-size:13px; color:var(--muted);
-      padding:8px 10px; border-radius:999px;
-      border:1px solid var(--border);
-      background:rgba(248,250,252,.8);
-    }
-    .card{
-      background:var(--card);
-      border:1px solid var(--border);
-      border-radius:var(--radius);
-      padding:18px;
-      box-shadow: 0 8px 22px rgba(15,23,42,.06);
-    }
-    .photo{
-      display:flex; flex-direction:column; gap:14px; height:100%;
-      justify-content:space-between;
-    }
-    .avatar{
-      width:84px; height:84px; border-radius:22px;
-      background: linear-gradient(135deg, rgba(37,99,235,.22), rgba(14,165,233,.16));
-      border:1px solid rgba(226,232,240,.9);
-      display:grid; place-items:center;
-      overflow:hidden;
-    }
-    .avatar img{width:100%; height:100%; object-fit:cover}
-    .small{font-size:13px; color:var(--muted); margin:0}
-    .section{padding:28px 0}
-    .section h2{margin:0 0 14px; font-size:22px}
-    .grid-3{display:grid; grid-template-columns:repeat(3,1fr); gap:14px}
-    .grid-2{display:grid; grid-template-columns:repeat(2,1fr); gap:14px}
-    @media (max-width: 900px){
-      .grid-3{grid-template-columns:1fr}
-      .grid-2{grid-template-columns:1fr}
-    }
-    .item h3{margin:0 0 6px; font-size:16px}
-    .item p{margin:0; color:var(--muted); font-size:14px}
-    .tags{display:flex; flex-wrap:wrap; gap:8px; margin-top:12px}
-    .tag{
-      font-size:12px; color:var(--muted);
-      padding:6px 8px; border-radius:999px; border:1px solid var(--border);
-      background:rgba(255,255,255,.65);
-    }
-    .proj-head{display:flex; align-items:flex-start; justify-content:space-between; gap:10px}
-    .proj-links{display:flex; gap:10px; flex-wrap:wrap}
-    .proj-links a{font-size:13px; color:var(--accent); font-weight:600}
-    .proj-links a:hover{text-decoration:underline}
-    .footer{
-      padding:26px 0 40px;
-      border-top:1px solid var(--border);
-      color:var(--muted);
+      display:inline-flex; align-items:center; gap:8px;
+      padding:8px 12px; border-radius:999px;
+      border:1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.03);
+      color: rgba(232,238,246,.86);
       font-size:13px;
     }
-    .kbd{
-      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+    .dot{width:8px; height:8px; border-radius:999px; background: var(--accent2); box-shadow:0 0 0 4px rgba(92,240,183,.10)}
+
+    .hero{padding:48px 0 10px}
+    .hero-grid{
+      display:grid;
+      grid-template-columns: 1.25fr .75fr;
+      gap:22px;
+      align-items:stretch;
+    }
+    .card{
+      background:
+        radial-gradient(280px 160px at 20% 10%, rgba(138,162,255,.12), transparent 60%),
+        radial-gradient(240px 160px at 80% 0%, rgba(92,240,183,.10), transparent 60%),
+        rgba(12,17,32,.80);
+      border:1px solid rgba(255,255,255,.10);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      position:relative;
+      overflow:hidden;
+    }
+    .card::after{
+      content:"";
+      position:absolute; inset:-120px;
+      background: radial-gradient(circle at var(--mx,50%) var(--my,50%), rgba(255,255,255,.10), transparent 40%);
+      opacity: 0;
+      transition: opacity .2s ease;
+      pointer-events:none;
+    }
+    .card:hover::after{opacity:1}
+    .card-pad{padding:26px}
+
+    .kicker{
+      display:flex; gap:10px; align-items:center; flex-wrap:wrap;
+      margin-bottom:14px;
+    }
+    h1{
+      font-size: 46px;
+      line-height:1.05;
+      margin:0 0 14px;
+      letter-spacing: -0.6px;
+    }
+    .subhead{
+      margin:0 0 18px;
+      color: rgba(232,238,246,.82);
+      font-size:16px;
+      max-width: 62ch;
+    }
+    .cta-row{display:flex; gap:12px; flex-wrap:wrap; align-items:center; margin-top:16px}
+    .mini{color:var(--muted); font-size:13px; margin-top:14px}
+
+    .side{
+      display:flex; flex-direction:column; gap:14px;
+    }
+    .stat{
+      display:flex; justify-content:space-between; gap:12px; align-items:flex-end;
+      padding:16px 18px;
+      border-radius: 16px;
+      border: 1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.03);
+    }
+    .stat .label{font-size:13px; color: rgba(232,238,246,.70)}
+    .stat .value{
+      font-family: var(--mono);
+      font-size: 14px;
+      color: rgba(232,238,246,.92);
+    }
+    .side .box{
+      padding:18px;
+      border-radius: 16px;
+      border: 1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.03);
+    }
+    .side h3{margin:0 0 10px; font-size:14px; color: rgba(232,238,246,.90)}
+    .tags{display:flex; flex-wrap:wrap; gap:8px}
+    .tag{
+      padding:8px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.03);
       font-size: 12px;
-      padding: 4px 7px;
-      border:1px solid var(--border);
-      border-bottom-width:2px;
-      border-radius:8px;
-      background:rgba(255,255,255,.8);
-      color:var(--text);
+      color: rgba(232,238,246,.78);
+    }
+
+    section{padding:26px 0}
+    .section-title{
+      display:flex; align-items:center; justify-content:space-between; gap:12px;
+      margin:0 0 12px;
+    }
+    .section-title h2{margin:0; font-size:18px}
+
+    .grid-3{
+      display:grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap:14px;
+    }
+    .grid-2{
+      display:grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap:14px;
+    }
+    .tile{
+      padding:18px;
+      border-radius: 16px;
+      border: 1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.03);
+      min-height: 98px;
+    }
+    .tile h3{margin:0 0 8px; font-size:14px}
+    .tile p{margin:0; color: rgba(232,238,246,.74); font-size:13px}
+
+    .toolbar{
+      display:flex; gap:10px; flex-wrap:wrap; align-items:center; justify-content:space-between;
+      padding: 12px 14px;
+      border: 1px solid rgba(255,255,255,.10);
+      border-radius: 16px;
+      background: rgba(255,255,255,.02);
+      margin: 10px 0 12px;
+    }
+    .search{
+      display:flex; align-items:center; gap:10px;
+      flex:1;
+      min-width: 220px;
+    }
+    .search input{
+      width:100%;
+      padding: 12px 12px;
+      border-radius: 14px;
+      border: 1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.03);
+      color: var(--text);
+      outline:none;
+    }
+    .select{
+      padding: 12px 12px;
+      border-radius: 14px;
+      border: 1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.03);
+      color: var(--text);
+      outline:none;
+      min-width: 160px;
+    }
+    .project{
+      padding:18px;
+      border-radius: 18px;
+      border: 1px solid rgba(255,255,255,.10);
+      background:
+        radial-gradient(220px 120px at 10% 0%, rgba(138,162,255,.10), transparent 60%),
+        rgba(255,255,255,.03);
+      display:flex;
+      flex-direction:column;
+      gap:10px;
+      position:relative;
+      overflow:hidden;
+    }
+    .project h3{margin:0; font-size:15px}
+    .project p{margin:0; color: rgba(232,238,246,.74); font-size:13px}
+    .project .meta{
+      display:flex; flex-wrap:wrap; gap:8px;
+      margin-top:4px;
+    }
+    .chip{
+      font-family: var(--mono);
+      font-size: 12px;
+      padding: 6px 8px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.03);
+      color: rgba(232,238,246,.80);
+    }
+    .actions{display:flex; gap:10px; flex-wrap:wrap; margin-top:6px}
+
+    .contact-grid{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap:14px;
+    }
+    .field label{display:block; font-size:12px; color: rgba(232,238,246,.70); margin:0 0 6px}
+    .field input, .field textarea{
+      width:100%;
+      padding:12px 12px;
+      border-radius:14px;
+      border:1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.03);
+      color: var(--text);
+      outline:none;
+      font-family: var(--sans);
+      resize: vertical;
+    }
+    .field textarea{min-height:110px}
+    footer{
+      padding:22px 0 36px;
+      color: rgba(232,238,246,.55);
+      font-size: 13px;
+    }
+    .footer-row{
+      display:flex; gap:10px; flex-wrap:wrap; justify-content:space-between; align-items:center;
+      border-top: 1px solid var(--line);
+      padding-top: 16px;
+    }
+
+    @media (max-width: 920px){
+      .hero-grid{grid-template-columns: 1fr; }
+      h1{font-size: 40px}
+      nav{justify-content:flex-start}
+      .brand{min-width:auto}
+    }
+    @media (max-width: 760px){
+      .grid-3{grid-template-columns: 1fr}
+      .grid-2{grid-template-columns: 1fr}
+      .contact-grid{grid-template-columns: 1fr}
+      h1{font-size: 34px}
     }
   </style>
 </head>
 
 <body>
-  <!-- NAV -->
-  <header class="nav">
-    <div class="container">
-      <div class="nav-inner">
-        <div class="brand">
-          <span class="dot" aria-hidden="true"></span>
-          <a href="#top">BLASIUS USTETU</a>
+  <div class="topbar">
+    <div class="inner container" style="padding:0 24px">
+      <div class="brand">
+        <div class="logo" aria-hidden="true"></div>
+        <div>
+          <div style="font-size:14px; opacity:.95;">BlesProduction</div>
+          <div style="font-size:12px; color:rgba(232,238,246,.62); font-family:var(--mono);">Web3 Frontend Developer</div>
         </div>
-        <nav class="links" aria-label="Navigasi">
-          <a href="#about">About</a>
-          <a href="#skills">Skills</a>
-          <a href="#projects">Projects</a>
-          <a href="#contact">Contact</a>
-          <a class="btn" href="assets/cv.pdf" target="_blank" rel="noopener">Download CV</a>
-        </nav>
+      </div>
+
+      <nav>
+        <a href="#proof">Proof</a>
+        <a href="#about">About</a>
+        <a href="#skills">Skills</a>
+        <a href="#projects">Projects</a>
+        <a href="#contact">Contact</a>
+        <a class="btn small" style="border:1px solid rgba(255,255,255,.10); background: rgba(255,255,255,.03);" href="#projects">View Projects</a>
+      </nav>
+    </div>
+  </div>
+
+  <main class="container">
+    <div class="hero" id="home">
+      <div class="hero-grid">
+        <div class="card hover-tilt">
+          <div class="card-pad">
+            <div class="kicker">
+              <span class="pill"><span class="dot"></span> Available for: Freelance • Contract • Remote</span>
+              <span class="pill" style="font-family:var(--mono);">Jakarta (GMT+7)</span>
+            </div>
+
+            <h1>Clean UI for crypto products.</h1>
+
+            <p class="subhead">
+              I build minimal, fast, and production-ready interfaces for Web3 applications — from landing pages and dashboards
+              to DApps with wallet connectivity. Focused on clean UX, performance, and structured UI implementation.
+            </p>
+
+            <div class="cta-row">
+              <a class="btn primary" href="#projects">View Projects</a>
+              <a class="btn" href="#" id="downloadCvBtn">Download CV</a>
+              <a class="btn" href="#contact">Contact</a>
+            </div>
+
+            <div class="mini">
+              Tech focus: React • JavaScript • Ethers.js • API • Performance
+            </div>
+          </div>
+        </div>
+
+        <div class="card hover-tilt">
+          <div class="card-pad side">
+            <div class="stat">
+              <div>
+                <div class="label">Primary Stack</div>
+                <div class="value">React / JS / Ethers</div>
+              </div>
+              <div class="value">v1.0</div>
+            </div>
+
+            <div class="box">
+              <h3>Highlights</h3>
+              <div class="tags">
+                <span class="tag">Wallet Connect</span>
+                <span class="tag">Dashboard UX</span>
+                <span class="tag">Data Visualization</span>
+                <span class="tag">Design Systems</span>
+                <span class="tag">Web Performance</span>
+                <span class="tag">API Integration</span>
+              </div>
+            </div>
+
+            <div class="box">
+              <h3>Links</h3>
+              <div style="display:flex; flex-direction:column; gap:10px; font-size:13px; color:rgba(232,238,246,.78)">
+                <a href="https://github.com/BlesUstetu/Project" id="githubLink" target="_blank" rel="noreferrer">
+                  GitHub: <span style="color:rgba(232,238,246,.95)">BlesUstetu/Project</span>
+                </a>
+                <a href="mailto:lionustetu@gmail.com" id="emailLink">
+                  Email: <span style="color:rgba(232,238,246,.95)">lionustetu@gmail.com</span>
+                </a>
+                <a class="btn small" style="width:fit-content" href="./cv.pdf" target="_blank" rel="noreferrer">Open CV (PDF)</a>
+              </div>
+            </div>
+
+          </div>
+        </div>
       </div>
     </div>
-  </header>
 
-  <!-- HERO -->
-  <main id="top">
-    <section class="hero">
-      <div class="container">
-        <div class="hero-grid">
-          <div>
-            <h1 class="headline">Frontend / Web Developer yang fokus pada produk rapi dan cepat.</h1>
-            <p class="sub">
-              Saya membangun website dan web app yang responsif, mudah dipakai, dan siap production.
-              Fokus saya: UI yang bersih, performa, dan integrasi API / dashboard.
-            </p>
+    <section id="proof">
+      <div class="section-title">
+        <h2>Proof / Metrics</h2>
+      </div>
 
-            <div class="pill-row">
-              <span class="pill">Based: Indonesia</span>
-              <span class="pill">Open to: Freelance / Full-time</span>
-              <span class="pill">Stack: HTML • CSS • JS • React</span>
-            </div>
-
-            <div style="display:flex; gap:12px; flex-wrap:wrap">
-              <a class="btn primary" href="#projects">Lihat Projects</a>
-              <a class="btn" href="#contact">Hubungi Saya</a>
-            </div>
-
-            <p class="small" style="margin-top:14px">
-              Shortcut: tekan <span class="kbd">Ctrl</span> + <span class="kbd">L</span> untuk copy link portofolio setelah publish.
-            </p>
-          </div>
-
-          <aside class="card photo">
-            <div style="display:flex; gap:14px; align-items:center">
-              <div class="avatar" title="Ganti dengan foto kamu">
-                <!-- Ganti src jadi assets/foto.jpg -->
-                <img src="https://via.placeholder.com/200" alt="Foto profil" />
-              </div>
-              <div>
-                <h2 style="margin:0; font-size:18px">BLASIUS USTETU</h2>
-                <p class="small" style="margin:4px 0 0">Web Developer • UI Implementation • Dashboard</p>
-              </div>
-            </div>
-
-            <div class="card" style="background:rgba(255,255,255,.65)">
-              <div class="item">
-                <h3>Highlight</h3>
-                <p>Membuat landing page + dashboard dengan integrasi data dan UX yang jelas.</p>
-                <div class="tags">
-                  <span class="tag">Responsive</span>
-                  <span class="tag">Clean UI</span>
-                  <span class="tag">Fast</span>
-                  <span class="tag">SEO basic</span>
-                </div>
-              </div>
-            </div>
-
-            <div style="display:flex; gap:10px; flex-wrap:wrap">
-              <a class="btn" href="https://github.com/USERNAME" target="_blank" rel="noopener">GitHub</a>
-              <a class="btn" href="https://linkedin.com/in/USERNAME" target="_blank" rel="noopener">LinkedIn</a>
-              <a class="btn" href="mailto:you@email.com">Email</a>
-            </div>
-          </aside>
+      <div class="grid-3">
+        <div class="tile">
+          <h3>Projects</h3>
+          <p>Web Apps • Dashboards • DApps</p>
+        </div>
+        <div class="tile">
+          <h3>Focus</h3>
+          <p>Web3 UI • Wallet Integration • Data UX</p>
+        </div>
+        <div class="tile">
+          <h3>Stack</h3>
+          <p>React • JavaScript • Ethers.js • API</p>
         </div>
       </div>
     </section>
 
-    <!-- ABOUT -->
-    <section id="about" class="section">
-      <div class="container">
+    <section id="about">
+      <div class="section-title">
         <h2>About</h2>
-        <div class="grid-2">
-          <div class="card item">
-            <h3>Ringkas</h3>
-            <p>
-              Saya seorang developer yang suka mengubah kebutuhan bisnis menjadi UI yang jelas dan mudah digunakan.
-              Terbiasa membuat web app berbasis form, dashboard, dan landing page yang rapi.
-            </p>
-          </div>
-          <div class="card item">
-            <h3>Value yang saya bawa</h3>
-            <p>
-              Struktur kode yang bersih, komunikasi jelas, dan hasil yang siap deploy.
-              Saya juga nyaman dengan iterasi cepat berdasarkan feedback.
-            </p>
+      </div>
+
+      <div class="card">
+        <div class="card-pad">
+          <p style="margin:0; color:rgba(232,238,246,.82); max-width:90ch;">
+            <b>BlesProduction</b> is a developer brand focused on building clean, modern, and scalable web interfaces.
+            I deliver user-friendly UI for business tools, dashboards, and Web3 products, with strong attention to
+            layout consistency, performance, and reliability.
+          </p>
+
+          <div style="margin-top:16px; display:flex; gap:10px; flex-wrap:wrap;">
+            <span class="chip">UI Engineering</span>
+            <span class="chip">Component Systems</span>
+            <span class="chip">Web3 Frontend</span>
+            <span class="chip">Data UX</span>
+            <span class="chip">Performance</span>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- SKILLS -->
-    <section id="skills" class="section">
-      <div class="container">
+    <section id="skills">
+      <div class="section-title">
         <h2>Skills</h2>
-        <div class="grid-3">
-          <div class="card item">
-            <h3>Frontend</h3>
-            <p>HTML, CSS, JavaScript, Responsive Layout, Accessibility basic.</p>
-            <div class="tags">
-              <span class="tag">React</span>
-              <span class="tag">Tailwind (optional)</span>
-              <span class="tag">SPA</span>
-            </div>
-          </div>
-          <div class="card item">
-            <h3>Backend / Data</h3>
-            <p>Node.js basic, REST API integration, Google Sheets / Apps Script.</p>
-            <div class="tags">
-              <span class="tag">API</span>
-              <span class="tag">Auth basic</span>
-              <span class="tag">CRUD</span>
-            </div>
-          </div>
-          <div class="card item">
-            <h3>Tools</h3>
-            <p>Git/GitHub, Figma handoff, Deployment GitHub Pages.</p>
-            <div class="tags">
-              <span class="tag">Versioning</span>
-              <span class="tag">Debug</span>
-              <span class="tag">Performance</span>
-            </div>
-          </div>
+      </div>
+
+      <div class="grid-3">
+        <div class="tile">
+          <h3>Frontend Development</h3>
+          <p>HTML, CSS, JavaScript</p>
+        </div>
+        <div class="tile">
+          <h3>Framework & UI</h3>
+          <p>React, Next.js (optional), Tailwind (optional)</p>
+        </div>
+        <div class="tile">
+          <h3>Web3 & Data</h3>
+          <p>Ethers.js, Wallet Connect, REST API</p>
         </div>
       </div>
     </section>
 
-    <!-- PROJECTS -->
-    <section id="projects" class="section">
-      <div class="container">
+    <section id="projects">
+      <div class="section-title">
         <h2>Projects</h2>
-
-        <div class="grid-2">
-          <article class="card item">
-            <div class="proj-head">
-              <div>
-                <h3>Project 01 — Inventory Web App</h3>
-                <p>Web app sederhana untuk input/update data inventaris berbasis spreadsheet.</p>
-              </div>
-              <div class="proj-links">
-                <a href="#" target="_blank" rel="noopener">Demo</a>
-                <a href="#" target="_blank" rel="noopener">Repo</a>
-              </div>
-            </div>
-            <div class="tags">
-              <span class="tag">CRUD</span>
-              <span class="tag">Sheets</span>
-              <span class="tag">Form UX</span>
-            </div>
-          </article>
-
-          <article class="card item">
-            <div class="proj-head">
-              <div>
-                <h3>Project 02 — Trading Dashboard</h3>
-                <p>Dashboard KPI (PnL, ROI, APR) dengan visual chart dan ringkasan harian.</p>
-              </div>
-              <div class="proj-links">
-                <a href="#" target="_blank" rel="noopener">Demo</a>
-                <a href="#" target="_blank" rel="noopener">Repo</a>
-              </div>
-            </div>
-            <div class="tags">
-              <span class="tag">Dashboard</span>
-              <span class="tag">Chart</span>
-              <span class="tag">Analytics</span>
-            </div>
-          </article>
-
-          <article class="card item">
-            <div class="proj-head">
-              <div>
-                <h3>Project 03 — Landing Page Product</h3>
-                <p>Landing page clean dengan CTA, section fitur, dan optimasi mobile.</p>
-              </div>
-              <div class="proj-links">
-                <a href="#" target="_blank" rel="noopener">Demo</a>
-                <a href="#" target="_blank" rel="noopener">Repo</a>
-              </div>
-            </div>
-            <div class="tags">
-              <span class="tag">SEO basic</span>
-              <span class="tag">Fast load</span>
-              <span class="tag">Responsive</span>
-            </div>
-          </article>
-
-          <article class="card item">
-            <div class="proj-head">
-              <div>
-                <h3>Project 04 — Web3 DApp (Optional)</h3>
-                <p>DApp sederhana: connect wallet dan interaksi contract (contoh donasi).</p>
-              </div>
-              <div class="proj-links">
-                <a href="#" target="_blank" rel="noopener">Demo</a>
-                <a href="#" target="_blank" rel="noopener">Repo</a>
-              </div>
-            </div>
-            <div class="tags">
-              <span class="tag">Ethers.js</span>
-              <span class="tag">Wallet</span>
-              <span class="tag">BNB Chain</span>
-            </div>
-          </article>
-        </div>
       </div>
+
+      <div class="toolbar">
+        <div class="search">
+          <span style="font-family:var(--mono); font-size:12px; color:rgba(232,238,246,.70)">SEARCH</span>
+          <input id="searchInput" placeholder="Cari project…" />
+        </div>
+
+        <select id="filterSelect" class="select">
+          <option value="all">All</option>
+          <option value="dapp">DApp</option>
+          <option value="dashboard">Dashboard</option>
+          <option value="landing">Landing</option>
+        </select>
+      </div>
+
+      <div class="grid-2" id="projectGrid"></div>
     </section>
 
-    <!-- CONTACT -->
-    <section id="contact" class="section">
-      <div class="container">
+    <section id="contact">
+      <div class="section-title">
         <h2>Contact</h2>
-        <div class="grid-2">
-          <div class="card item">
-            <h3>Kontak langsung</h3>
-            <p style="margin-bottom:10px">Paling cepat via email. Bisa juga DM LinkedIn.</p>
-            <div style="display:flex; gap:10px; flex-wrap:wrap">
-              <a class="btn primary" href="mailto:you@email.com">you@email.com</a>
-              <a class="btn" href="https://wa.me/62XXXXXXXXXXX" target="_blank" rel="noopener">WhatsApp</a>
-              <a class="btn" href="https://linkedin.com/in/USERNAME" target="_blank" rel="noopener">LinkedIn</a>
-            </div>
-          </div>
+      </div>
 
-          <div class="card item">
-            <h3>Info</h3>
-            <p>
-              Jika kamu rekruter/klien, tuliskan ringkas kebutuhan, deadline, dan referensi.
-              Saya akan balas dengan estimasi scope dan milestone.
-            </p>
+      <div class="card">
+        <div class="card-pad">
+          <div class="contact-grid">
+            <div>
+              <div style="margin-bottom:12px; color:rgba(232,238,246,.82)">
+                Untuk kolaborasi, project freelance/contract, atau kebutuhan UI Web3.
+              </div>
+
+              <div style="display:flex; gap:10px; flex-wrap:wrap; margin-top:10px">
+                <a class="btn primary" href="mailto:lionustetu@gmail.com" id="emailCta">Email Me</a>
+                <a class="btn" href="https://github.com/BlesUstetu/Project" target="_blank" rel="noreferrer" id="githubCta">GitHub</a>
+                <a class="btn" href="./cv.pdf" target="_blank" rel="noreferrer">Open CV</a>
+              </div>
+
+              <div style="margin-top:16px; color:rgba(232,238,246,.70); font-size:13px">
+                <div><span style="color:rgba(232,238,246,.92)">Email:</span> lionustetu@gmail.com</div>
+                <div><span style="color:rgba(232,238,246,.92)">Location:</span> Indonesia</div>
+                <div><span style="color:rgba(232,238,246,.92)">Timezone:</span> GMT+7</div>
+              </div>
+            </div>
+
+            <form id="contactForm">
+              <div class="field">
+                <label>Nama</label>
+                <input name="name" placeholder="Nama Anda" required />
+              </div>
+              <div class="field" style="margin-top:10px">
+                <label>Email</label>
+                <input name="email" type="email" placeholder="email@domain.com" required />
+              </div>
+              <div class="field" style="margin-top:10px">
+                <label>Pesan</label>
+                <textarea name="message" placeholder="Tulis kebutuhan Anda…" required></textarea>
+              </div>
+              <div style="margin-top:12px; display:flex; gap:10px; flex-wrap:wrap; justify-content:flex-end">
+                <button class="btn" type="reset">Reset</button>
+                <button class="btn primary" type="submit">Send</button>
+              </div>
+              <div id="formHint" style="margin-top:10px; font-size:12px; color:rgba(232,238,246,.60)"></div>
+            </form>
           </div>
         </div>
       </div>
     </section>
 
-    <footer class="footer">
-      <div class="container" style="display:flex; justify-content:space-between; gap:12px; flex-wrap:wrap">
-        <span>© <span id="y"></span> Your Name. All rights reserved.</span>
-        <span>Built with HTML/CSS • Hosted on GitHub Pages</span>
+    <footer>
+      <div class="footer-row">
+        <div>© <span id="year"></span> BlesProduction. All rights reserved.</div>
+        <div style="font-family:var(--mono); opacity:.8"></div>
       </div>
     </footer>
   </main>
 
   <script>
-    // Tahun otomatis
-    document.getElementById("y").textContent = new Date().getFullYear();
+    const PROFILE = {
+      github: "https://github.com/BlesUstetu/Project",
+      email: "lionustetu@gmail.com",
+      cvUrl: "./cv.pdf",
+    };
+
+    const PROJECTS = [
+      { title: "Crypto Dashboard — Trading Metrics UI", type: "dashboard",
+        desc: "KPI cards, charts, and clean data UX for crypto performance tracking.",
+        stack: ["React", "API", "Charts"], live: "#", repo: "#" },
+      { title: "DApp — Wallet Connect Starter", type: "dapp",
+        desc: "Simple DApp frontend with wallet connectivity and transaction flow UX.",
+        stack: ["Ethers.js", "Wallet", "UI"], live: "#", repo: "#" },
+      { title: "Landing Page — Web3 Product", type: "landing",
+        desc: "Fast, minimal landing page optimized for performance and conversions.",
+        stack: ["HTML", "CSS", "JS"], live: "#", repo: "#" },
+      { title: "Admin Panel — Inventory Web App UI", type: "dashboard",
+        desc: "Clean internal tool UI with forms, tables, and role-based views.",
+        stack: ["UI", "Forms", "Tables"], live: "#", repo: "#" },
+    ];
+
+    const $ = (q) => document.querySelector(q);
+    const $$ = (q) => document.querySelectorAll(q);
+
+    function isValidLink(url){
+      return typeof url === "string" && url.trim() && url.trim() !== "#";
+    }
+
+    function bindLinks(){
+      $("#githubLink").href = PROFILE.github;
+      $("#emailLink").href = "mailto:" + PROFILE.email;
+      $("#githubCta").href = PROFILE.github;
+      $("#emailCta").href = "mailto:" + PROFILE.email;
+
+      $("#downloadCvBtn").addEventListener("click", (e) => {
+        e.preventDefault();
+        if(!isValidLink(PROFILE.cvUrl)){
+          alert("CV link belum diisi. Edit PROFILE.cvUrl di bagian <script>.");
+          return;
+        }
+        window.open(PROFILE.cvUrl, "_blank");
+      });
+    }
+
+    function renderProjects(list){
+      const grid = $("#projectGrid");
+      grid.innerHTML = "";
+      list.forEach(p => {
+        const el = document.createElement("div");
+        el.className = "project hover-tilt";
+        el.dataset.type = p.type;
+
+        const liveBtn = isValidLink(p.live)
+          ? `<a class="btn small primary" href="${p.live}" target="_blank" rel="noreferrer">Live</a>`
+          : "";
+
+        const repoBtn = isValidLink(p.repo)
+          ? `<a class="btn small" style="background: rgba(255,255,255,.03); border:1px solid rgba(255,255,255,.10);" href="${p.repo}" target="_blank" rel="noreferrer">Repo</a>`
+          : "";
+
+        const actions = (liveBtn || repoBtn) ? `<div class="actions">${liveBtn}${repoBtn}</div>` : ``;
+
+        el.innerHTML = `
+          <div class="top">
+            <div>
+              <h3>${p.title}</h3>
+              <p>${p.desc}</p>
+              <div class="meta">
+                <span class="chip">${p.type.toUpperCase()}</span>
+                ${p.stack.map(s => `<span class="chip">${s}</span>`).join("")}
+              </div>
+            </div>
+          </div>
+          ${actions}
+        `;
+        grid.appendChild(el);
+      });
+      bindHoverTilt();
+    }
+
+    function applyFilters(){
+      const q = $("#searchInput").value.trim().toLowerCase();
+      const t = $("#filterSelect").value;
+
+      const filtered = PROJECTS.filter(p => {
+        const text = (p.title + " " + p.desc + " " + p.stack.join(" ")).toLowerCase();
+        const matchQ = !q || text.includes(q);
+        const matchT = (t === "all") || (p.type === t);
+        return matchQ && matchT;
+      });
+
+      renderProjects(filtered);
+    }
+
+    function initContact(){
+      $("#contactForm").addEventListener("submit", (e) => {
+        e.preventDefault();
+        const data = new FormData(e.target);
+        const name = data.get("name");
+        const email = data.get("email");
+        const message = data.get("message");
+
+        const subject = encodeURIComponent(`[Portfolio] Message from ${name}`);
+        const body = encodeURIComponent(`Name: ${name}
+Email: ${email}
+
+Message:
+${message}`);
+
+        const mailto = `mailto:${PROFILE.email}?subject=${subject}&body=${body}`;
+        window.location.href = mailto;
+
+        $("#formHint").textContent = "Jika email client tidak terbuka otomatis, pastikan default mail app sudah diatur di perangkat Anda.";
+      });
+    }
+
+    function bindHoverTilt(){
+      $$(".hover-tilt").forEach(card => {
+        card.addEventListener("mousemove", (e) => {
+          const r = card.getBoundingClientRect();
+          const x = e.clientX - r.left;
+          const y = e.clientY - r.top;
+
+          const mx = (x / r.width) * 100;
+          const my = (y / r.height) * 100;
+
+          card.style.setProperty("--mx", mx + "%");
+          card.style.setProperty("--my", my + "%");
+
+          const rotateY = ((x - r.width/2) / r.width) * 6;
+          const rotateX = -((y - r.height/2) / r.height) * 6;
+          card.style.transform = `perspective(900px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-1px)`;
+        });
+
+        card.addEventListener("mouseleave", () => {
+          card.style.transform = "none";
+          card.style.setProperty("--mx", "50%");
+          card.style.setProperty("--my", "50%");
+        });
+      });
+    }
+
+    $("#year").textContent = new Date().getFullYear();
+    bindLinks();
+    renderProjects(PROJECTS);
+    initContact();
+
+    $("#searchInput").addEventListener("input", applyFilters);
+    $("#filterSelect").addEventListener("change", applyFilters);
   </script>
 </body>
 </html>
