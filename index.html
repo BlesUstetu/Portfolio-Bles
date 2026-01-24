@@ -306,6 +306,10 @@
       .grid-2{grid-template-columns: 1fr}
       .contact-grid{grid-template-columns: 1fr}
       h1{font-size: 34px}
+    
+      .cta-row{flex-direction: column; align-items: stretch}
+      .cta-row .btn{width: 100%; justify-content: center}
+
     }
   </style>
 </head>
@@ -316,8 +320,8 @@
       <div class="brand">
         <div class="logo" aria-hidden="true"></div>
         <div>
-          <div style="font-size:14px; opacity:.95;">BlesProduction</div>
-          <div style="font-size:12px; color:rgba(232,238,246,.62); font-family:var(--mono);">Web3 Frontend Developer</div>
+          <div style="font-size:14px; opacity:.95;">Blasius Ustetu</div>
+          <div style="font-size:12px; color:rgba(232,238,246,.62); font-family:var(--mono);">Web/Web3 Frontend Developer</div>
         </div>
       </div>
 
@@ -339,19 +343,17 @@
           <div class="card-pad">
             <div class="kicker">
               <span class="pill"><span class="dot"></span> Available for: Freelance • Contract • Remote</span>
-              <span class="pill" style="font-family:var(--mono);">Jakarta (GMT+7)</span>
             </div>
 
-            <h1>Clean UI for crypto products.</h1>
+            <h1>Clean UI for Web2/Web3 products.</h1>
 
             <p class="subhead">
-              I build minimal, fast, and production-ready interfaces for Web3 applications — from landing pages and dashboards
+              I build minimal, fast, and production-ready interfaces for Web2/Web3 applications — from landing pages and dashboards
               to DApps with wallet connectivity. Focused on clean UX, performance, and structured UI implementation.
             </p>
 
             <div class="cta-row">
               <a class="btn primary" href="#projects">View Projects</a>
-              <a class="btn" href="#" id="downloadCvBtn">Download CV</a>
               <a class="btn" href="#contact">Contact</a>
             </div>
 
@@ -386,14 +388,13 @@
             <div class="box">
               <h3>Links</h3>
               <div style="display:flex; flex-direction:column; gap:10px; font-size:13px; color:rgba(232,238,246,.78)">
-                <a href="https://github.com/BlesUstetu/Project" id="githubLink" target="_blank" rel="noreferrer">
-                  GitHub: <span style="color:rgba(232,238,246,.95)">BlesUstetu/Project</span>
+                <a href="https://wa.me/6285239993851" id="waLink" target="_blank" rel="noreferrer">
+                  No WhatsApp: <span style="color:rgba(232,238,246,.95)">+6285239993851</span>
                 </a>
                 <a href="mailto:lionustetu@gmail.com" id="emailLink">
                   Email: <span style="color:rgba(232,238,246,.95)">lionustetu@gmail.com</span>
                 </a>
-                <a class="btn small" style="width:fit-content" href="./cv.pdf" target="_blank" rel="noreferrer">Open CV (PDF)</a>
-              </div>
+</div>
             </div>
 
           </div>
@@ -499,14 +500,14 @@
           <div class="contact-grid">
             <div>
               <div style="margin-bottom:12px; color:rgba(232,238,246,.82)">
-                Untuk kolaborasi, project freelance/contract, atau kebutuhan UI Web3.
+                Untuk kolaborasi, project freelance/contract, atau kebutuhan UI Web2/Web3.
               </div>
 
               <div style="display:flex; gap:10px; flex-wrap:wrap; margin-top:10px">
                 <a class="btn primary" href="mailto:lionustetu@gmail.com" id="emailCta">Email Me</a>
-                <a class="btn" href="https://github.com/BlesUstetu/Project" target="_blank" rel="noreferrer" id="githubCta">GitHub</a>
-                <a class="btn" href="./cv.pdf" target="_blank" rel="noreferrer">Open CV</a>
-              </div>
+
+                <a class="btn" href="./cv.pdf" id="cvCta" target="_blank" rel="noreferrer">Open CV</a>
+</div>
 
               <div style="margin-top:16px; color:rgba(232,238,246,.70); font-size:13px">
                 <div><span style="color:rgba(232,238,246,.92)">Email:</span> lionustetu@gmail.com</div>
@@ -549,10 +550,9 @@
 
   <script>
     const PROFILE = {
-      github: "https://github.com/BlesUstetu/Project",
-      email: "lionustetu@gmail.com",
-      cvUrl: "./cv.pdf",
-    };
+email: "lionustetu@gmail.com",
+cvUrl: "./cv.pdf",
+};
 
     const PROJECTS = [
       { title: "Crypto Dashboard — Trading Metrics UI", type: "dashboard",
@@ -577,19 +577,18 @@
     }
 
     function bindLinks(){
-      $("#githubLink").href = PROFILE.github;
-      $("#emailLink").href = "mailto:" + PROFILE.email;
-      $("#githubCta").href = PROFILE.github;
-      $("#emailCta").href = "mailto:" + PROFILE.email;
+      const wa = document.querySelector("#waLink");
+      if (wa) wa.href = "https://wa.me/6285239993851";
 
-      $("#downloadCvBtn").addEventListener("click", (e) => {
-        e.preventDefault();
-        if(!isValidLink(PROFILE.cvUrl)){
-          alert("CV link belum diisi. Edit PROFILE.cvUrl di bagian <script>.");
-          return;
-        }
-        window.open(PROFILE.cvUrl, "_blank");
-      });
+      const emailLink = document.querySelector("#emailLink");
+      if (emailLink) emailLink.href = "mailto:" + PROFILE.email;
+
+      const emailCta = document.querySelector("#emailCta");
+      if (emailCta) emailCta.href = "mailto:" + PROFILE.email;
+
+      const cvCta = document.querySelector("#cvCta");
+      if (cvCta) cvCta.href = PROFILE.cvUrl;
+
     }
 
     function renderProjects(list){
