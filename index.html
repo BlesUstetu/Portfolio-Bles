@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>BlesProduction — Portfolio</title>
-  <meta name="description" content="BlesProduction — Web3 Frontend Developer. Clean UI for crypto products." />
+  <title>BlesProduction — Web Developer Portfolio</title>
+  <meta name="description" content="BlesProduction — Web Developer. Web apps, dashboards, and automation tools." />
   <style>
     :root{
       --bg:#070A12;
@@ -311,6 +311,22 @@
       .cta-row .btn{width: 100%; justify-content: center}
 
     }
+  
+.badge-featured{
+  position:absolute;
+  top:14px;
+  right:14px;
+  padding:6px 10px;
+  font-size:11px;
+  font-weight:700;
+  letter-spacing:.4px;
+  border-radius:999px;
+  background: linear-gradient(135deg, #FFD36A, #FF9F1C);
+  color:#1a1200;
+  box-shadow: 0 8px 22px rgba(255,159,28,.35);
+  border: 1px solid rgba(255,255,255,.18);
+}
+
   </style>
 </head>
 
@@ -321,7 +337,7 @@
         <div class="logo" aria-hidden="true"></div>
         <div>
           <div style="font-size:14px; opacity:.95;">Blasius Ustetu</div>
-          <div style="font-size:12px; color:rgba(232,238,246,.62); font-family:var(--mono);">Web/Web3 Frontend Developer</div>
+          <div style="font-size:12px; color:rgba(232,238,246,.62); font-family:var(--mono);">Web Developer • Dashboards • Automation</div>
         </div>
       </div>
 
@@ -345,11 +361,11 @@
               <span class="pill"><span class="dot"></span> Available for: Freelance • Contract • Remote</span>
             </div>
 
-            <h1>Clean UI for Web2/Web3 products.</h1>
+            <h1>Web Developer — Web Apps, Dashboards & Automation</h1>
 
             <p class="subhead">
-              I build minimal, fast, and production-ready interfaces for Web2/Web3 applications — from landing pages and dashboards
-              to DApps with wallet connectivity. Focused on clean UX, performance, and structured UI implementation.
+              I build clean, fast, and production-ready web applications — from internal dashboards and inventory systems
+              to client-facing landing pages. Focused on reliable logic, clear UX, and real-world usability.
             </p>
 
             <div class="cta-row">
@@ -358,8 +374,7 @@
             </div>
 
             <div class="mini">
-              Tech focus: React • JavaScript • Ethers.js • API • Performance
-            </div>
+              Tech focus: HTML • CSS • JavaScript • Google Apps Script • React (optional)</div>
           </div>
         </div>
 
@@ -368,7 +383,7 @@
             <div class="stat">
               <div>
                 <div class="label">Primary Stack</div>
-                <div class="value">React / JS / Ethers</div>
+                <div class="value">HTML / JS / Apps Script</div>
               </div>
               <div class="value">v1.0</div>
             </div>
@@ -376,12 +391,12 @@
             <div class="box">
               <h3>Highlights</h3>
               <div class="tags">
-                <span class="tag">Wallet Connect</span>
-                <span class="tag">Dashboard UX</span>
-                <span class="tag">Data Visualization</span>
-                <span class="tag">Design Systems</span>
-                <span class="tag">Web Performance</span>
-                <span class="tag">API Integration</span>
+                <span class="tag">Internal Tools</span>
+                <span class="tag">Dashboards</span>
+                <span class="tag">Automation</span>
+                <span class="tag">Google Sheets DB</span>
+                <span class="tag">Forms & Validation</span>
+                <span class="tag">Role-based UI</span>
               </div>
             </div>
 
@@ -407,20 +422,22 @@
         <h2>Proof / Metrics</h2>
       </div>
 
+      
       <div class="grid-3">
         <div class="tile">
           <h3>Projects</h3>
-          <p>Web Apps • Dashboards • DApps</p>
+          <p>Web Apps • Dashboards • Internal Tools</p>
         </div>
         <div class="tile">
           <h3>Focus</h3>
-          <p>Web3 UI • Wallet Integration • Data UX</p>
+          <p>Clean UI • Reliable Logic • Real-World Use</p>
         </div>
         <div class="tile">
           <h3>Stack</h3>
-          <p>React • JavaScript • Ethers.js • API</p>
+          <p>HTML • CSS • JavaScript • Google Apps Script</p>
         </div>
       </div>
+
     </section>
 
     <section id="about">
@@ -431,9 +448,9 @@
       <div class="card">
         <div class="card-pad">
           <p style="margin:0; color:rgba(232,238,246,.82); max-width:90ch;">
-            <b>BlesProduction</b> is a developer brand focused on building clean, modern, and scalable web interfaces.
-            I deliver user-friendly UI for business tools, dashboards, and Web3 products, with strong attention to
-            layout consistency, performance, and reliability.
+            <b>BlesProduction</b> is a developer brand focused on building clean, modern, and scalable web applications.
+            I deliver practical solutions for internal tools (inventory, logs, dashboards) and client-facing web pages,
+            with strong attention to usability, consistency, and reliability.
           </p>
 
           <div style="margin-top:16px; display:flex; gap:10px; flex-wrap:wrap;">
@@ -454,16 +471,16 @@
 
       <div class="grid-3">
         <div class="tile">
-          <h3>Frontend Development</h3>
+          <h3>Frontend</h3>
           <p>HTML, CSS, JavaScript</p>
         </div>
         <div class="tile">
-          <h3>Framework & UI</h3>
-          <p>React, Next.js (optional), Tailwind (optional)</p>
+          <h3>Web Applications</h3>
+          <p>Dashboards, Forms, Tables, Automation</p>
         </div>
         <div class="tile">
-          <h3>Web3 & Data</h3>
-          <p>Ethers.js, Wallet Connect, REST API</p>
+          <h3>Integrations</h3>
+          <p>Google Sheets as DB, Google Apps Script, REST API (optional)</p>
         </div>
       </div>
     </section>
@@ -484,7 +501,8 @@
           <option value="dapp">DApp</option>
           <option value="dashboard">Dashboard</option>
           <option value="landing">Landing</option>
-        </select>
+                  <option value="ticket">Ticketing</option>
+</select>
       </div>
 
       <div class="grid-2" id="projectGrid"></div>
@@ -500,7 +518,7 @@
           <div class="contact-grid">
             <div>
               <div style="margin-bottom:12px; color:rgba(232,238,246,.82)">
-                Untuk kolaborasi, project freelance/contract, atau kebutuhan UI Web2/Web3.
+                Untuk kolaborasi, kebutuhan web app/dashboard, atau project freelance/contract. Available for full-time, contract, and freelance.
               </div>
 
               <div style="display:flex; gap:10px; flex-wrap:wrap; margin-top:10px">
@@ -555,19 +573,41 @@ cvUrl: "./cv.pdf",
 };
 
     const PROJECTS = [
-      { title: "Crypto Dashboard — Trading Metrics UI", type: "dashboard",
-        desc: "KPI cards, charts, and clean data UX for crypto performance tracking.",
-        stack: ["React", "API", "Charts"], live: "#", repo: "#" },
-      { title: "DApp — Wallet Connect Starter", type: "dapp",
-        desc: "Simple DApp frontend with wallet connectivity and transaction flow UX.",
-        stack: ["Ethers.js", "Wallet", "UI"], live: "#", repo: "#" },
-      { title: "Landing Page — Web3 Product", type: "landing",
-        desc: "Fast, minimal landing page optimized for performance and conversions.",
-        stack: ["HTML", "CSS", "JS"], live: "#", repo: "#" },
-      { title: "Admin Panel — Inventory Web App UI", type: "dashboard",
-        desc: "Clean internal tool UI with forms, tables, and role-based views.",
-        stack: ["UI", "Forms", "Tables"], live: "#", repo: "#" },
-    ];
+  {
+  title: "E-Ticket System — Public Web Ticketing Platform",
+  type: "ticket",
+  desc: "Production-ready web ticketing system for public access. Designed for fast ticket ordering, clean UI flow, and reliable data validation. Suitable for events, internal distribution, and small-scale ticket sales.",
+  stack: ["HTML", "CSS", "JavaScript"],
+  live: "https://blesustetu.github.io/tiket/",
+  repo: "",
+  highlight: "FEATURED"
+},
+{
+    title: "Inventory Management — Internal Web Application",
+    type: "dashboard",
+    desc: "Web-based inventory system for recording, updating, and searching asset data, built to replace manual processes and improve operational efficiency.",
+    stack: ["HTML", "CSS", "JavaScript", "Forms"],
+    live: "https://blesustetu.github.io/INVENTARIS/",
+    repo: ""
+  },
+  {
+    title: "Dashboard KPI — Performance Monitoring Web App",
+    type: "dashboard",
+    desc: "Internal dashboard for monitoring KPIs and performance metrics, designed to help teams track data efficiently and support faster decision-making.",
+    stack: ["HTML", "CSS", "JavaScript", "Charts"],
+    live: "https://blesustetu.github.io/Dasboard-KPI/",
+    repo: ""
+  },
+  {
+    title: "Neon Dodge — Browser Game Prototype",
+    type: "landing",
+    desc: "Lightweight browser-based game showcasing interactive UI, animation handling, and responsive gameplay logic.",
+    stack: ["JavaScript", "Canvas", "UI"],
+    live: "https://blesustetu.github.io/Game-Neon-dodge/",
+    repo: ""
+  }
+];
+
 
     const $ = (q) => document.querySelector(q);
     const $$ = (q) => document.querySelectorAll(q);
@@ -607,9 +647,15 @@ cvUrl: "./cv.pdf",
           ? `<a class="btn small" style="background: rgba(255,255,255,.03); border:1px solid rgba(255,255,255,.10);" href="${p.repo}" target="_blank" rel="noreferrer">Repo</a>`
           : "";
 
-        const actions = (liveBtn || repoBtn) ? `<div class="actions">${liveBtn}${repoBtn}</div>` : ``;
+        
+
+        const badge = p.highlight
+          ? `<div class="badge-featured">${p.highlight}</div>`
+          : "";
+const actions = (liveBtn || repoBtn) ? `<div class="actions">${liveBtn}${repoBtn}</div>` : ``;
 
         el.innerHTML = `
+          ${badge}
           <div class="top">
             <div>
               <h3>${p.title}</h3>
