@@ -26,7 +26,7 @@ export default function Chat() {
   return (
     <div style={{ maxWidth: 760, margin: "40px auto", padding: 16, fontFamily: "system-ui, Arial" }}>
       <h1 style={{ marginBottom: 8 }}>AI Fullstack Chat</h1>
-      <p style={{ marginTop: 0, opacity: 0.75 }}>React + FastAPI + OpenAI</p>
+      <p style={{ marginTop: 0, opacity: 0.75 }}>React + BlesProduction</p>
 
       <div style={{ display: "flex", gap: 8 }}>
         <input
